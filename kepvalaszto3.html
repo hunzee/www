@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<!-- from: https://www.w3schools.com/howto/howto_js_image_comparison.asp -->
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+
+<style>
+* {box-sizing: border-box;}
+
+.img-comp-container {
+  position: relative;
+  height: 200px; /*should be the same height as the images*/
+}
+
+.img-comp-img {
+  position: absolute;
+  width: auto;
+  height: auto;
+  overflow:hidden;
+}
+
+.img-comp-img img {
+  display:block;
+  vertical-align:middle;
+}
+
+.img-comp-slider {
+  position: absolute;
+  z-index:9;
+  cursor: ew-resize;
+  /*set the appearance of the slider:*/
+  width: 40px;
+  height: 40px;
+  background-color: #2196F3;
+  opacity: 0.7;
+  border-radius: 50%;
+}
+</style>
+<script>
+function initComparisons() {
+	var x, i;
+	/*find all elements with an "overlay" class:*/
+	x = document.getElementsByClassName("img-comp-overlay");
+	for (i = 0; i < x.length; i++) {
+		/*once for each "overlay" element:
+		pass the "overlay" element as a parameter when executing the compareImages function:*/
+		compareImages(x[i]);
+	}
+	function compareImages(img) {
+		var slider, img, clicked = 0, w, h;
+		/*get the width and height of the img element*/
+//		w = img.offsetWidth;
+//		h = img.offsetHeight;
+		w = 1500;
+		h = 850;
+		/*set the width of the img element to 50%:*/
+		img.style.width = (w / 2) + "px";
+		/*create slider:*/
+		slider = document.createElement("DIV");
+		slider.setAttribute("class", "img-comp-slider");
+		/*insert slider*/
+		img.parentElement.insertBefore(slider, img);
+		/*position the slider in the middle:*/
+		slider.style.top = (h / 2) - (slider.offsetHeight / 2) + "px";
+		slider.style.left = (w / 2) - (slider.offsetWidth / 2) + "px";
+		/*execute a function when the mouse button is pressed:*/
+		slider.addEventListener("mousedown", slideReady);
+		/*and another function when the mouse button is released:*/
+		window.addEventListener("mouseup", slideFinish);
+		/*or touched (for touch screens:*/
+		slider.addEventListener("touchstart", slideReady);
+		/*and released (for touch screens:*/
+		window.addEventListener("touchend", slideFinish);
+		function slideReady(e) {
+		/*prevent any other actions that may occur when moving over the image:*/
+		e.preventDefault();
+		/*the slider is now clicked and ready to move:*/
+		clicked = 1;
+		/*execute a function when the slider is moved:*/
+		window.addEventListener("mousemove", slideMove);
+		window.addEventListener("touchmove", slideMove);
+		}
+		function slideFinish() {
+		/*the slider is no longer clicked:*/
+		clicked = 0;
+		}
+		function slideMove(e) {
+		var pos;
+		/*if the slider is no longer clicked, exit this function:*/
+		if (clicked == 0) return false;
+		/*get the cursor's x position:*/
+		pos = getCursorPos(e)
+		/*prevent the slider from being positioned outside the image:*/
+		if (pos < 0) pos = 0;
+		if (pos > w) pos = w;
+		/*execute a function that will resize the overlay image according to the cursor:*/
+		slide(pos);
+		}
+		function getCursorPos(e) {
+		var a, x = 0;
+		e = (e.changedTouches) ? e.changedTouches[0] : e;
+		/*get the x positions of the image:*/
+		a = img.getBoundingClientRect();
+		/*calculate the cursor's x coordinate, relative to the image:*/
+		x = e.pageX - a.left;
+		/*consider any page scrolling:*/
+		x = x - window.pageXOffset;
+		return x;
+		}
+		function slide(x) {
+		/*resize the image:*/
+		img.style.width = x + "px";
+		/*position the slider:*/
+		slider.style.left = img.offsetWidth - (slider.offsetWidth / 2) + "px";
+		}
+	}
+}
+</script>
+</head>
+<body>
+<table width="1500px">
+  <tr>
+    <th width="750px">előtte</th>
+    <th width="750px">utána</th>
+  </tr>
+  <tr>
+    <td>
+      <a href="javascript:elotteFunction1();"><img id="elotte1" src="https://d1mkxvwtzddm9n.cloudfront.net/root/production/report/93/93580/503759-61b38e3e643d2.jpg" style="border:solid" width="100" height="56"></a>
+      <a href="javascript:elotteFunction2();"><img id="elotte2" src="https://d1mkxvwtzddm9n.cloudfront.net/root/production/report/93/93580/503760-61b38e410431c.jpg" width="100" height="56"></a>
+      <a href="javascript:elotteFunction3();"><img id="elotte3" src="https://d1mkxvwtzddm9n.cloudfront.net/root/production/report/93/93580/503761-61b38e436c97c.jpg" width="100" height="56"></a>
+      <a href="javascript:elotteFunction4();"><img id="elotte4" src="https://d1mkxvwtzddm9n.cloudfront.net/root/production/report/93/93580/503762-61b38e45dd9ae.jpg" width="100" height="56"></a>
+      <a href="javascript:elotteFunction5();"><img id="elotte5" src="https://d1mkxvwtzddm9n.cloudfront.net/root/production/report/93/93580/503763-61b38e486a35b.jpg" width="100" height="56"></a>
+    </td>
+    <td>
+      <a href="javascript:utanaFunction1();"><img id="utana1" src="https://d1mkxvwtzddm9n.cloudfront.net/root/production/report/93/93580/525987-622e2ced736bb.jpg" style="border:solid" width="100" height="56"></a>
+      <a href="javascript:utanaFunction2();"><img id="utana2" src="https://d1mkxvwtzddm9n.cloudfront.net/root/production/report/93/93580/525988-622e2cf1aa201.jpg" width="100" height="56"></a>
+      <a href="javascript:utanaFunction3();"><img id="utana3" src="https://d1mkxvwtzddm9n.cloudfront.net/root/production/report/93/93580/525989-622e2cf5bb76c.jpg" width="100" height="56"></a>
+      <a href="javascript:utanaFunction4();"><img id="utana4" src="https://d1mkxvwtzddm9n.cloudfront.net/root/production/report/93/93580/525990-622e2cf9ea0fb.jpg" width="100" height="56"></a>
+    </td>
+  </tr>
+</table>
+<a href='javascript:letoltes();'>képek letöltése</a>
+
+<div class="img-comp-container">
+  <div class="img-comp-img"><canvas id="canvasUtana"></canvas></div>
+  <div class="img-comp-img img-comp-overlay"><canvas id="canvasElotte"></canvas></div>
+
+</div>
+
+<script>
+/*Execute a function that will execute an image compare function for each element with the img-comp-overlay class:*/
+initComparisons();
+var linkElotte = "https://d1mkxvwtzddm9n.cloudfront.net/root/production/report/93/93580/503759-61b38e3e643d2.jpg";
+var linkUtana = "https://d1mkxvwtzddm9n.cloudfront.net/root/production/report/93/93580/525987-622e2ced736bb.jpg";
+
+
+        var canvasU, ctxU;
+		var imgObjUtana = new Image();
+        document.addEventListener('DOMContentLoaded', (ev)=>{
+            canvasU = document.getElementById('canvasUtana');
+            ctxU = canvasU.getContext('2d'); 
+            canvasU.width = 1500;
+            canvasU.height = 850;
+            
+            imgObjUtana.onload = function() {
+                ctxU.drawImage(imgObjUtana, 0, 0, 1500, 850);
+            };
+			imgObjUtana.src = linkUtana;
+        });
+
+
+        var canvasE, ctxE;
+		var imgObjElotte = new Image();
+        document.addEventListener('DOMContentLoaded', (ev)=>{
+            canvasE = document.getElementById('canvasElotte');
+            ctxE = canvasE.getContext('2d'); 
+            canvasE.width = 1500;
+            canvasE.height = 850;
+            
+            imgObjElotte.onload = function() {
+                ctxE.drawImage(imgObjElotte, 0, 0, 1500, 850);
+            };
+            imgObjElotte.src = linkElotte;
+        });
+
+
+</script>
+<script>
+function elotteFunction1() {
+	linkElotte = "https://d1mkxvwtzddm9n.cloudfront.net/root/production/report/93/93580/503759-61b38e3e643d2.jpg";
+//	document.getElementById("elotte").style.backgroundImage = "url(" + linkElotte + ")";
+	keretnelkulElotte();
+	document.getElementById("elotte1").style.border = "solid";
+	imgObjElotte.src = linkElotte;
+}
+function elotteFunction2() {
+	linkElotte = "https://d1mkxvwtzddm9n.cloudfront.net/root/production/report/93/93580/503760-61b38e410431c.jpg";
+//	document.getElementById("elotte").style.backgroundImage = "url(" + linkElotte + ")";
+	keretnelkulElotte();
+	document.getElementById("elotte2").style.border = "solid";
+//	ctxE.drawImage(imgObjElotte, 0, 0, 1500, 850);
+	imgObjElotte.src = linkElotte;
+
+}
+function elotteFunction3() {
+	linkElotte = "https://d1mkxvwtzddm9n.cloudfront.net/root/production/report/93/93580/503761-61b38e436c97c.jpg";
+//	document.getElementById("elotte").style.backgroundImage = "url(" + linkElotte + ")";
+	keretnelkulElotte();
+	document.getElementById("elotte3").style.border = "solid";
+	imgObjElotte.src = linkElotte;
+}
+function elotteFunction4() {
+	linkElotte = "https://d1mkxvwtzddm9n.cloudfront.net/root/production/report/93/93580/503762-61b38e45dd9ae.jpg";
+//	document.getElementById("elotte").style.backgroundImage = "url(" + linkElotte + ")";
+	keretnelkulElotte();
+	document.getElementById("elotte4").style.border = "solid";
+	imgObjElotte.src = linkElotte;
+}
+function elotteFunction5() {
+	linkElotte = "https://d1mkxvwtzddm9n.cloudfront.net/root/production/report/93/93580/503763-61b38e486a35b.jpg";
+//	document.getElementById("elotte").style.backgroundImage = "url(" + linkElotte + ")";
+	keretnelkulElotte();
+	document.getElementById("elotte5").style.border = "solid";
+	imgObjElotte.src = linkElotte;
+}
+function utanaFunction1() {
+	linkUtana = "https://d1mkxvwtzddm9n.cloudfront.net/root/production/report/93/93580/525987-622e2ced736bb.jpg";
+//	document.getElementById("utana").style.backgroundImage = "url(" + linkUtana + ")";
+	keretnelkulUtana();
+	document.getElementById("utana1").style.border = "solid";
+	imgObjUtana.src = linkUtana;
+}
+function utanaFunction2() {
+	linkUtana = "https://d1mkxvwtzddm9n.cloudfront.net/root/production/report/93/93580/525988-622e2cf1aa201.jpg";
+//	document.getElementById("utana").style.backgroundImage = "url(" + linkUtana + ")";
+	keretnelkulUtana();
+	document.getElementById("utana2").style.border = "solid";
+	imgObjUtana.src = linkUtana;
+}
+function utanaFunction3() {
+	linkUtana = "https://d1mkxvwtzddm9n.cloudfront.net/root/production/report/93/93580/525989-622e2cf5bb76c.jpg";
+//	document.getElementById("utana").style.backgroundImage = "url(" + linkUtana + ")";
+	keretnelkulUtana();
+	document.getElementById("utana3").style.border = "solid";
+	imgObjUtana.src = linkUtana;
+}
+function utanaFunction4() {
+	linkUtana = "https://d1mkxvwtzddm9n.cloudfront.net/root/production/report/93/93580/525990-622e2cf9ea0fb.jpg";
+//	document.getElementById("utana").style.backgroundImage = "url(" + linkUtana + ")";
+	keretnelkulUtana();
+	document.getElementById("utana4").style.border = "solid";
+	imgObjUtana.src = linkUtana;
+}
+function keretnelkulElotte() {
+  document.getElementById("elotte1").style.border = "0px";
+  document.getElementById("elotte2").style.border = "0px";
+  document.getElementById("elotte3").style.border = "0px";
+  document.getElementById("elotte4").style.border = "0px";
+  document.getElementById("elotte5").style.border = "0px";
+}
+function keretnelkulUtana() {
+  document.getElementById("utana1").style.border = "0px";
+  document.getElementById("utana2").style.border = "0px";
+  document.getElementById("utana3").style.border = "0px";
+  document.getElementById("utana4").style.border = "0px";
+}
+
+function downloadFile(file) {
+    // Create a link and set the URL using `createObjectURL`
+    const link = document.createElement('a');
+    link.style.display = 'none';
+    link.href = URL.createObjectURL(file);
+    link.download = file.name;
+
+    // It needs to be added to the DOM so it can be clicked
+    document.body.appendChild(link);
+    link.click();
+
+    // To make this work on Firefox we need to wait
+    // a little while before removing it.
+    setTimeout(() => {
+        URL.revokeObjectURL(link.href);
+        link.parentNode.removeChild(link);
+    }, 0);
+}
+function letoltes(){
+	console.log(imgObjElotte);
+//	myFile = new File([imgObjElotte], 'my-cat.jpg', {type: 'image/png',});
+//	downloadFile(myFile);
+
+//	document.location.href = canvasE.toDataURL("image/png").replace("image/png", "image/octet-stream");
+}
+	
+</script>
+</body>
+</html>
+
