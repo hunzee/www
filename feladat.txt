@@ -7,3 +7,4 @@ Netherlands_EvolutionBeeckestijn, not updated, 0.0
 Hungary_TatabanyaBlackhole, not updated, 0.0
 Hungary_VotiveChurch, updated, 1039
 Germany_WappenHalberstadt, not updated, 0.0
+UnitedKingdom_SouthStoke, not updated, 0.0
