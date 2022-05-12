@@ -6,3 +6,4 @@ Netherlands_EvolutionBeeckestijn, not updated, 0.0
 Hungary_TatabanyaBlackhole, not updated, 0.0
 Hungary_VotiveChurch, updated, 988
 Hungary_TatabanyaBlackhole, updated, 258
+Hungary_VotiveChurch, updated, 26
