@@ -9,3 +9,4 @@ Hungary_VotiveChurch, updated, 1039
 Germany_WappenHalberstadt, not updated, 0.0
 UnitedKingdom_SouthStoke, not updated, 0.0
 Slovakia_ChristmasStable, not updated, 0.0
+Slovakia_LePetitPrince, not updated, 0.0
