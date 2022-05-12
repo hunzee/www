@@ -3,3 +3,4 @@ Germany_EventPin, not updated, 0.0
 Germany_TresorICELimburg, not updated, 0.0
 USA_PrattvilleTrillium, not updated, 0.0
 Netherlands_EvolutionBeeckestijn, not updated, 0.0
+Hungary_TatabanyaBlackhole, not updated, 0.0
