@@ -1,2 +1,3 @@
 start - 2022.05.12 15:28:07
 Slovakia_Giraffe, not updated, 0.0
+Germany_EventPin, not updated, 0.0
