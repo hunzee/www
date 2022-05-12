@@ -12,3 +12,4 @@ Slovakia_ChristmasStable, not updated, 0.0
 Slovakia_LePetitPrince, not updated, 0.0
 Australia_TicTacMunzee, not updated, 0.0
 Hungary_FlatMattInBudapest, updated, 165
+stop - 2022.05.12 18:13:01 összesen 1251
