@@ -1,4 +1,4 @@
-{ "title" : [
+{
     "GOTM" : {
         "Australia" : {
             "Huntfield Heights Dog" : "",
@@ -285,5 +285,4 @@
             "Utah Beehive" : "UtahBeehive"
         }
     }
-    ]
 }
