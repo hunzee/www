@@ -1,0 +1,13 @@
+{
+ "error": {
+  "errors": [
+   {
+    "domain": "global",
+    "reason": "cannotExportFile",
+    "message": "This file cannot be exported by the user."
+   }
+  ],
+  "code": 403,
+  "message": "This file cannot be exported by the user."
+ }
+}
