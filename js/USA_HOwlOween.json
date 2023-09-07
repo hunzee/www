@@ -51,6 +51,7 @@
 "mapPin113676841": ["virtualonyx", "virtualonyx"],
 "mapPin170472000": ["virtualonyx", "virtualonyx"],
 "mapPin152726159": ["virtualonyx", "virtualonyx"],
+"mapPin190892880": ["voidmystery", "voidmystery"],
 "mapPin190974242": ["virtualonyx", "virtualonyx"],
 "mapPin181893223": ["virtualonyx", "virtualonyx"],
 "mapPin166126891": ["virtualonyx", "virtualonyx"],
@@ -68,6 +69,7 @@
 "mapPin190953045": ["voidmystery", "voidmystery"],
 "mapPin192186776": ["virtualonyx", "virtualonyx"],
 "mapPin190931291": ["virtual_black", "virtual_black"],
+"mapPin190927312": ["virtual_gray", "virtual_gray"],
 "mapPin188989471": ["virtual_gray", "virtual_gray"],
 "mapPin187227261": ["virtual_gray", "virtual_gray"],
 "mapPin190218459": ["virtualonyx", "virtualonyx"],
@@ -134,7 +136,7 @@
 "mapPin190467896": ["virtual_green", "virtual_green"],
 "mapPin190813742": ["virtual_black", "virtual_black"],
 "mapPin191045755": ["virtual_gray", "virtual_gray"],
-"mapPin191002023": ["sparbee", "virtual_dandelion"],
+"mapPin191002023": ["virtual_dandelion", "virtual_dandelion"],
 "mapPin187144477": ["virtual_yellow", "virtual_yellow"],
 "mapPin190977894": ["virtual_yellow", "virtual_yellow"],
 "mapPin168237728": ["virtual_gray", "virtual_gray"],
@@ -170,7 +172,6 @@
 "mapPin187227254": ["virtual_yellow_green", "virtual_yellow_green"]
 },
 "undeployed" : {
-"1694020438.766179": ["aufbau/14191/", "39.9915654083611", "-74.8195488287726", "voidmystery"],
-"1694020438.7708173": ["aufbau/14198/", "39.9913164604563", "-74.8202992618032", "virtual_gray"]
+
 }
 }
